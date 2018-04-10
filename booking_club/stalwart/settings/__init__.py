@@ -9,7 +9,7 @@ from .base import *
 import sys
 
 # # Decide whether to use staging settings or production settings based on environment variables
-deployment_type = os.environ.get("PAYMENTS_DEPLOYMENT_TYPE", None)
+deployment_type = os.environ.get("DEPLOYMENT_TYPE", None)
 if deployment_type == "STAGING":
     from .staging import *
 elif deployment_type == "PRODUCTION":

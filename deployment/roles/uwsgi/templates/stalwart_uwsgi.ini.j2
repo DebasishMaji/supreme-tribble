@@ -15,7 +15,7 @@ buffer-size    = 65535
 harakiri-verbose = 90
 wsgi-file       = {{project_root}}/{{project_name}}/booking_club/stalwart/wsgi.py
 
-env = ACCOUNTS_DEPLOYMENT_TYPE={{ DEPLOYMENT_TYPE }}
+env = DEPLOYMENT_TYPE={{ DEPLOYMENT_TYPE }}
 {% if DEPLOYMENT_TYPE == 'STAGING' %}
     {% set env_var = environment_variables.STAGING %}
 {% elif  DEPLOYMENT_TYPE == 'DEV' %}
