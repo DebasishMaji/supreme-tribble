@@ -1,8 +1,0 @@
----
-
-- name: Reload supervisorctl
-  shell: sudo supervisorctl reload all
-  tags:
-    - supervisor
-    - deploy
-    - setup

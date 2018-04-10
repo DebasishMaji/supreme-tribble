@@ -1,4 +1,0 @@
-- name: Supervisor Restart
-  service: name=supervisor state=restarted
-  tags:
-    - supervisor_restart
