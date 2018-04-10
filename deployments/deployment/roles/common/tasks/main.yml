@@ -1,0 +1,54 @@
+- name: update apt-get
+  apt: update_cache=yes
+  sudo: yes
+  tags:
+    - prepare
+
+- name: Set timezone variables
+  sudo: yes
+  copy: content='Asia/Kolkata'
+        dest=/etc/timezone
+        owner=root
+        group=root
+        mode=0644
+  notify:
+    - update timezone
+  tags:
+    - prepare
+
+- name: upgrade ubuntu server
+  apt: upgrade=yes
+  sudo: yes
+  notify: restart system
+  tags:
+    - prepare
+
+- name: Install required system packages.
+  apt: pkg={{ item }} state=installed
+  with_items: system_packages
+  sudo: yes
+  tags:
+    - prepare
+    - setup
+
+- name: Create Logging Directory
+  file: path=/var/log/stalwart_app_logs state=directory owner=www-data group=www-data mode=0755 recurse=yes
+  sudo: yes
+  tags:
+    - setup
+
+#- name: Put logrotate app configuration file
+#  template: src=stalwart_logrotate.conf.j2 dest=/etc/logrotate.d/stalwart
+#  sudo: yes
+#  tags:
+#    - setup
+#    - logrotate
+
+
+- name: Supervisor | make config directory
+  file: path=/etc/supervisor/conf.d/ recurse=yes state=directory mode=0755
+  sudo: yes
+  tags:
+    - prepare
+    - setup
+    - supervisor

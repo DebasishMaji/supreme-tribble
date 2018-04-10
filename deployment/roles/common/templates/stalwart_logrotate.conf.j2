@@ -1,0 +1,11 @@
+"/var/log/stalwart_app_logs/stalwart.log" {
+    su www-data www-data
+    missingok
+    ifempty
+    nocreate
+    rotate 5000
+    compress
+    dateext
+    dateyesterday
+    dateformat .%Y-%m-%d
+}

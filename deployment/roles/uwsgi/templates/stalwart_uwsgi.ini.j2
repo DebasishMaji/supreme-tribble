@@ -1,0 +1,29 @@
+[uwsgi]
+vhost           = true
+plugins         = python3
+chdir           = {{project_root}}/{{project_name}}/
+socket          = /tmp/stalwart.sock
+stats           = /tmp/statsock
+chmod-socket = 664
+master          = true
+enable-threads  = true
+max-requests    = 5000
+listen          = 1000
+processes       = {{ ansible_processor_vcpus * 2 }}
+threads 		= 1
+buffer-size    = 65535
+harakiri-verbose = 90
+wsgi-file       = {{project_root}}/{{project_name}}/booking_club/stalwart/wsgi.py
+
+env = ACCOUNTS_DEPLOYMENT_TYPE={{ DEPLOYMENT_TYPE }}
+{% if DEPLOYMENT_TYPE == 'STAGING' %}
+    {% set env_var = environment_variables.STAGING %}
+{% elif  DEPLOYMENT_TYPE == 'DEV' %}
+    {% set env_var = environment_variables.DEV %}
+{% else %}
+    {% set env_var = environment_variables.PRODUCTION %}
+{% endif %}
+
+{% for key, value in env_var.items() %}
+env = {{key}}={{value}}
+{% endfor %}

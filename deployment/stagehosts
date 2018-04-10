@@ -1,0 +1,25 @@
+ansibleStalwart ansible_ssh_host=52.14.161.245 #private=172.31.24.10
+
+[web]
+ansibleStalwart
+
+[sql]
+ansibleStalwart
+
+[celery]
+ansibleStalwart
+
+[supervisor]
+ansibleStalwart
+
+[stalwart:children]
+web
+celery
+
+[stalwart:vars]
+repo_remote=origin
+repo_branch=master
+DEPLOYMENT_TYPE=STAGING
+
+
+

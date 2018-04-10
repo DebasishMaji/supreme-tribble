@@ -1,0 +1,21 @@
+- hosts: all
+  roles:
+    - common
+
+- hosts: stalwart
+  roles:
+    - web
+
+
+- hosts: web
+  roles:
+    - nginx
+    - uwsgi
+
+- hosts: celery
+  roles:
+    - celery_ww
+
+- hosts: supervisor
+  roles:
+    - supervisor

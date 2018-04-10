@@ -1,0 +1,21 @@
+#vars/main.yml
+
+system_packages:
+  - htop
+  - python3-pip
+  - tree
+  - htop
+  - build-essential
+  - git
+  - python-dev
+  - libmysqlclient-dev
+  - uwsgi-plugin-python
+  - libssl-dev
+  - libffi-dev
+  - libxml2-dev
+  - libxslt-dev
+  - libudev-dev
+  - libncurses5-dev
+  - logrotate
+  - supervisor
+
