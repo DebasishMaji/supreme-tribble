@@ -1,7 +1,7 @@
 [uwsgi]
 vhost           = true
 plugins         = python3
-chdir           = {{project_root}}/{{project_name}}/
+chdir           = {{project_root}}/{{project_name}}/booking_club/
 socket          = /tmp/stalwart.sock
 stats           = /tmp/statsock
 chmod-socket = 664
@@ -25,5 +25,5 @@ env = DEPLOYMENT_TYPE={{ DEPLOYMENT_TYPE }}
 {% endif %}
 
 {% for key, value in env_var.items() %}
-env = {{key}}={{value}}
+    env = {{key}}={{value}}
 {% endfor %}
