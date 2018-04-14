@@ -150,3 +150,7 @@ INCLUDE_AUTH_URLS = True
 
 DEFAULT_CHARSET = 'utf-8'
 
+AUTH_USER_MODEL = 'accounts.User'
+
+USER_MODEL_USERNAME_FIELD = 'email'
+
